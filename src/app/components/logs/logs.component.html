@@ -1,0 +1,18 @@
+<div *ngIf="loaded && logs.length > 0" class="alert alert-success" role="alert">
+  {{getSum()}} Total Loaned: ${{logSum}}
+</div>
+
+<ul class="list-group" *ngIf="loaded && logs.length > 0">
+  <li *ngFor="let log of logs" [class.list-group-item-secondary]="selectedLog === log" class="list-group-item d-flex justify-content-between align-items-center">
+    <a (click)="onSelect(log)" href="#">{{ log.name }} owes ${{log.owed}}</a>
+    <span class="log-date">{{ log.date | date: 'shortDate'}} <i (click)="onDelete(log)" class="fa fa-remove"></i></span>
+  </li>
+</ul>
+
+<div *ngIf="loaded && logs.length == 0">
+  <h5>There are no loans in the system</h5>
+</div>
+
+<div *ngIf="!loaded">
+  <h5>Loading...</h5>
+</div>
