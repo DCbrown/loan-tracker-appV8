@@ -31,13 +31,12 @@ export class LogsComponent implements OnInit {
     });
   }
 
-  getSum(index: number) {
+  getSum() {
     let sum = 0;
     for (let i = 0; i < this.logs.length; i++) {
       sum += this.logs[i].owed;
     }
     this.logSum = sum;
-    console.log(sum);
   }
 
   onSelect(log: Log) {
